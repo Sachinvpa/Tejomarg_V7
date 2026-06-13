@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quotation Portal Sign In — Tejomarg Foundation</title>
+<meta name="description" content="Sign in to the Tejomarg Foundation Quotation Portal."/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<style>
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(700px 320px at 90% 0%, rgba(255,112,10,0.10), transparent 70%),
+      radial-gradient(600px 300px at 5% 100%, rgba(255,112,10,0.07), transparent 70%),
+      var(--tm-off-white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-topbar {
+    padding: 22px clamp(20px, 4vw, 48px);
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--tm-gray-deep);
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .back-link .chev { transition: transform .2s; font-size: 16px; }
+  .back-link:hover { color: var(--tm-orange); }
+  .back-link:hover .chev { transform: translateX(-4px); }
+
+  .login-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px 64px;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 440px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%);
+    border: 1.5px solid var(--tm-gray-mist);
+    border-radius: 20px;
+    padding: 48px 44px 40px;
+    box-shadow: 0 20px 50px rgba(27,24,20,0.10);
+    position: relative;
+    overflow: hidden;
+  }
+  .login-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FF9244 0%, #FF700A 45%, #D45A00 100%);
+  }
+
+  .login-logo {
+    display: block;
+    margin: 0 auto 26px;
+    width: 190px;
+    max-width: 80%;
+  }
+  .login-card h1 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--tm-ink);
+  }
+  .login-card .sub {
+    font-size: 14px;
+    color: var(--tm-gray);
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.55;
+  }
+
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--tm-ink);
+    margin-bottom: 9px;
+    text-transform: uppercase;
+  }
+  .field input {
+    width: 100%;
+    padding: 14px 17px;
+    border: 1.5px solid var(--tm-gray-mist);
+    background: var(--tm-paper);
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--tm-ink);
+    transition: all .2s;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--tm-orange);
+    box-shadow: 0 0 0 4px rgba(255,112,10,0.12);
+  }
+
+  #login-error {
+    display: none;
+    background: #FFF5F0;
+    border: 1.5px solid #E26309;
+    color: var(--tm-ink);
+    padding: 13px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .login-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .login-actions .btn { justify-content: center; padding: 14px 22px; font-size: 14.5px; }
+
+  .login-help {
+    margin-top: 22px;
+    font-size: 12.5px;
+    color: var(--tm-gray);
+    text-align: center;
+    line-height: 1.55;
+  }
+  .login-help a { color: var(--tm-orange-deep); font-weight: 600; }
+
+  .login-card.shake { animation: tm-shake .45s ease; }
+  @keyframes tm-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-9px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(4px); }
+  }
+
+  @media (max-width: 480px) {
+    .login-card { padding: 38px 26px 32px; }
+    .login-actions { grid-template-columns: 1fr; }
+    .login-actions .btn-outline { order: 2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Back to contact -->
+<div class="login-topbar">
+  <a class="back-link" href="contact.html"><span class="chev">←</span> Back to Contact</a>
+</div>
+
+<main class="login-stage">
+  <form id="login-form" class="login-card" novalidate>
+    <img class="login-logo" src="logo.svg" alt="Tejomarg Foundation"/>
+    <h1>Quotation Portal</h1>
+    <p class="sub">Restricted access — sign in with your Tejomarg partner credentials.</p>
+
+    <div id="login-error" role="alert" aria-live="assertive">
+      <strong>Sign-in failed.</strong> The User ID or Password is incorrect. Please try again.
+    </div>
+
+    <div class="field">
+      <label for="login-userid">User ID</label>
+      <input id="login-userid" name="userid" type="email" placeholder="name@tejomarg.org" autocomplete="username" required/>
+    </div>
+
+    <div class="field">
+      <label for="login-password">Password</label>
+      <input id="login-password" name="password" type="password" placeholder="••••••••••" autocomplete="current-password" required/>
+    </div>
+
+    <div class="login-actions">
+      <a href="contact.html" class="btn btn-outline">Cancel</a>
+      <button type="submit" class="btn btn-primary btn-arrow">Submit <span class="arrow">→</span></button>
+    </div>
+
+    <p class="login-help">Need access? Write to <a href="mailto:contact@tejomarg.org?subject=Quotation%20Portal%20Access">contact@tejomarg.org</a>.</p>
+  </form>
+</main>
+
+<script>
+  (function () {
+    const form = document.getElementById('login-form');
+    const errorBox = document.getElementById('login-error');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    function showError() {
+      errorBox.style.display = 'block';
+      form.classList.remove('shake');
+      void form.offsetWidth; /* restart animation */
+      form.classList.add('shake');
+      const pw = document.getElementById('login-password');
+      pw.value = '';
+      pw.focus();
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const userid = document.getElementById('login-userid').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      errorBox.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-sending');
+
+      try {
+        // Credentials are verified on the server (/api/login). The password
+        // is never checked or stored in the browser; on success the server
+        // sets an HttpOnly session cookie that unlocks the portal.
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ userid: userid, password: password })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          window.location.href = data.redirect || 'Quotation_portal/portal.html';
+          return;
+        }
+        showError();
+      } catch (_) {
+        showError();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-sending');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
